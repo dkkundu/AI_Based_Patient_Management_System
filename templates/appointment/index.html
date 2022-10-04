@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block style %}
+
+
+<style>
+  .row.form-field {
+    display: grid;
+    grid-template-columns: 0% 50% 50%;
+    grid-gap: 2px;
+}
+  span.asteriskField {
+     color: #f00;
+}
+</style>
+{% endblock style %}
+
+{% block maincontent %}
+<!--inner banner-->
+<div class="inner-banner">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-7">
+        <h1>Get Appointment</h1>
+      </div>
+      <div class="col-md-5">
+        <ol class="breadcrumb">
+          <li><a href="{% url 'index' %}">Home</a></li>
+          <li class="active">Appointment</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+<!--inner banner End-->
+
+<!--Main Content Start-->
+<div class="main-content padding-0">
+  <section class="appointment-form">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6"><img src="{% static 'heartcare/images/form-pic.jpg' %}" alt=""></div>
+        <div class="col-md-6">
+          <form id="application_form" action="" enctype="multipart/form-data" class="form-register" method="POST" accept-charset="UTF-8"
+                data-upazila-url={% url 'load_upazila' %} data-district-url={% url 'load_district' %} data-doctor-url={% url 'patient_ms:load_doctor' %}>
+            {% csrf_token %}
+            <div class="app-form">
+                <div class="row form-field">
+                    <div class="col-6">
+                      {{ form.speciality|as_crispy_field }}
+                    </div>
+                    <div class="col-6">
+                       {{ form.division|as_crispy_field }}
+                    </div>
+                </div>
+                <div class="row form-field">
+                    <div class="col-6">
+                      {{ form.district|as_crispy_field }}
+                    </div>
+                    <div class="col-6">
+                       {{ form.upazila|as_crispy_field }}
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12">
+                      {{ form.doctor|as_crispy_field }}
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12">
+                      {{ form.problem|as_crispy_field }}
+                    </div>
+                </div>
+                  <div class="row form-field">
+                    <div class="col-6">
+                      {{ form.appointment_day|as_crispy_field }}
+                    </div>
+                    <div class="col-6">
+                      {{ form.appointment_time|as_crispy_field }}
+                    </div>
+                </div>
+
+
+
+
+
+              <div class="col-md-12 text-center">
+                <input value="Book Appointment" type="submit">
+              </div>
+                <br>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+<!--Main Content End-->
+{% endblock maincontent %}
+
+
+{% block extra_js %}
+<script>
+
+$('#id_appointment_day').calendar({
+  type: 'date'
+});
+
+</script>
+<script src="{% static 'heartcare/data_load.js' %}"></script>
+
+
+{% endblock extra_js %}

@@ -1,0 +1,157 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block maincontent %}
+{% block style %}
+<link rel="stylesheet" href="{% static 'custom/re_design.css' %}"/>
+<link rel="stylesheet" href="{% static 'custom/profile.css' %}"/>
+<style>
+  .inner-banner {
+    padding: 30px 0 30px !important;
+}
+
+</style>
+{% endblock %}
+<!--inner banner-->
+<div class="inner-banner">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7">
+                <h1>Profile</h1>
+            </div>
+            <div class="col-md-5">
+                <ol class="breadcrumb">
+                    {% block nev_block %}
+                    <li><a href="{% url 'index' %}">Home</a></li>
+                    <li class="active">Profile</li>
+                    {%  endblock %}
+
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+<!--inner banner End-->
+
+<!--Main Content Start-->
+<div class="main-content">
+    <div class="contact">
+        <div class="container">
+                <div class="row profile">
+                    <div class="col-md-3">
+                        <div class="profile-sidebar">
+                            <!-- SIDEBAR USERPIC -->
+                            <div class="profile-userpic">
+                                {% if request.user.patient_data.picture %}
+                                <img src="{{ request.user.patient_data.picture.url }}"
+                                     class="img-responsive" alt="">
+                                {% else %}
+                                <img src="{% static 'image/p.png' %}"
+                                     class="img-responsive" alt="">
+                                {% endif %}
+                            </div>
+                            <!-- END SIDEBAR USERPIC -->
+                            <!-- SIDEBAR USER TITLE -->
+                            <div class="profile-usertitle">
+                                <div class="profile-usertitle-name">
+                                    {{ request.user.patient_data.name }}
+                                </div>
+                                <div class="profile-usertitle-job">
+                                    Patient
+                                </div>
+                            </div>
+
+                            <!-- END SIDEBAR BUTTONS -->
+                            <!-- SIDEBAR MENU -->
+                            <div class="profile-usermenu">
+                                <ul class="nav">
+                                    <li class="active">
+                                        <a href="{% url 'patient_ms:patient_profile' %}">
+                                            <i class="glyphicon glyphicon-home"></i>
+                                            Overview </a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'patient_ms:patient_info_update' pk=request.user.patient_data.pk %}">
+                                            <i class="glyphicon glyphicon-user"></i>
+                                            Update Profile </a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'patient_ms:appointment_forget' %}" target="_blank">
+                                            <i class="glyphicon glyphicon-ok"></i>
+                                            Forget Appointment Serial </a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'contact' %}">
+                                            <i class="glyphicon glyphicon-flag"></i>
+                                            Help </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- END MENU -->
+
+
+
+                        </div>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="profile-content">
+                            {% block profile_block %}
+                           <div class="card-body">
+                                  <div class="row">
+                                    <div class="col-sm-3">
+                                      <h6 class="mb-0">Full Name</h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                      {{ request.user.patient_data.name }}
+                                    </div>
+                                  </div>
+                                  <hr>
+                                  <div class="row">
+                                    <div class="col-sm-3">
+                                      <h6 class="mb-0">Phone</h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                      {{ request.user }}
+                                    </div>
+                                  </div>
+                                  <hr>
+                                  <div class="row">
+                                    <div class="col-sm-3">
+                                      <h6 class="mb-0">Age</h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                      {{ request.user.patient_data.age }}
+                                    </div>
+                                  </div>
+                                  <hr>
+                                  <div class="row">
+                                    <div class="col-sm-3">
+                                      <h6 class="mb-0">NID</h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                      {{ request.user.patient_data.nid }}
+                                    </div>
+                                  </div>
+                                  <hr>
+
+
+                                  <div class="row">
+                                    <div class="col-sm-3">
+                                      <h6 class="mb-0">Full Address</h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                      {{ request.user.patient_data.get_full_address }}
+                                    </div>
+                                  </div>
+                                </div>
+                            {%  endblock %}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>
+<!--Main Content End-->
+{% endblock maincontent %}

@@ -1,0 +1,122 @@
+.secound_save {
+    background: #840b0bd1;
+    margin: 3% 0;
+    color: #fff;
+}
+.form-control {
+    background-color: #e0d9d9a8;
+}
+.secound_save_again {
+    background: #840b0bd1;
+    margin: 3% 0;
+    color: #fff;
+}
+
+.text-muted {
+    color: #fff6f6;
+}
+button.btn.btn-secondary {
+    color: #000;
+}
+.card-hover{
+       box-shadow: 0px 0px 14px 1px rgba(0,0,0,0.22);
+       margin-top: 2%;
+}
+.card-header.text-center {
+    height: 50px;
+    margin-bottom: 30px;
+}
+.btn-outline-info:hover {
+    color: #ec0000 !important;
+    border-color: #270c0c !important;
+}
+.btn-outline-info {
+    color: #f00 !important;
+    border-color: #de2a2a !important;
+}
+.text-center.btn-set {
+    margin: 3% 0;
+}
+        .form-header {
+            background-image: url("{% static 'images/pic.jpg' %}");
+            height: 229px;
+            width: 100%;
+        }
+        #div_id_dob .bootstrap-datetimepicker-widget {
+            width: 100% !important;
+        }
+        .required {
+            color: red;
+        }
+        .form-level {
+            color: #2d3436;
+            font-weight: 600;
+        }
+        .card-header {
+            border-bottom: 1px solid #19181875;
+            background-color: rgb(211 40 58)
+        }
+        .card-hover:hover{
+            box-shadow: 1px 2px 20px 1px rgba(0,0,0,0.22);
+            margin-top: 3%;
+        }
+
+        .event-card {
+
+        }
+
+        .event-card h1 {
+            font-size: 48px;
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .event-card span {
+            font-size: 28px;
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .image {
+            position: absolute;
+            opacity: .1;
+            left: 0;
+            top: 0
+        }
+        .form-control {
+            border-radius: 5px;
+        }
+
+
+        section.ftco-section.ftco-no-pt.ftc-no-pb {
+            background-color: rgb(207 211 224 / 70%);
+        }
+
+        .card-header2 {
+            margin: 10px auto;
+        }
+        .inline._contract_person.mb-4.row.inline-form {
+            display: grid;
+            grid-template-columns: 100% 0% 85%;
+            margin-left: 0px;
+        }
+        i.fa.fa-trash.text-danger {
+            margin-left: -7%;
+            margin-top: 42px;
+            font-size: 26px;
+        }
+        a.add-row.btn.btn-success {
+            color: #fff;
+            height: 37px;
+        }
+        span.asteriskField {
+            color: #fe0000;
+        }
+        ul.messages.mb-1 {
+            margin-left: -38px;
+            list-style-type: none;
+        }
+
+.set-midile {
+    margin: 0 12%;
+}

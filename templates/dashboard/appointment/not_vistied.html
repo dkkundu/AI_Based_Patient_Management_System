@@ -1,0 +1,61 @@
+{% extends "dashboard/dashboard.html" %}
+{% load static %}
+
+
+{% block extra_css  %}
+<style>
+    img.image-sise {
+    width: 60%;
+    margin: 0 25%
+}
+</style>
+{% endblock extra_css %}
+
+
+{% block body  %}
+<div class="col-md-12">
+    <div class="tile">
+        <h3 class="tile-title">Bordered Table</h3>
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Phone Number</th>
+                <th>Age</th>
+                <th>Time</th>
+                <th class="col-md-3 col-xs-1">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% if object_list %}
+            {% for object in object_list %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ object.patient.patient_data.name }}</td>
+                <td>{{ object.patient.phone }}</td>
+
+                <td>{{ object.patient.patient_data.age }}</td>
+                <td>{{ object.appointment_time }}</td>
+                <td class="col-md-3 col-xs-1">
+                    <a class="btn btn-outline-success" href="{% url 'patient_ms:view_record' pk=object.patient.patient_data.pk %}">
+                        <i class="fa fa-clipboard">All Record </i>
+                    </a>
+                    <a class="btn btn-outline-primary" href="{% url 'patient_ms:add_record' pk=object.patient.patient_data.pk %}">
+                        <i class="fa fa-plus-square-o" aria-hidden="true"> Add Record</i>
+                    </a>
+
+                </td>
+            </tr>
+            {% endfor  %}
+            {% else %}
+
+            </tbody>
+        </table>
+        <div class="image_div">
+         <img class="image-sise" src="{% static 'image/list.gif' %}">
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

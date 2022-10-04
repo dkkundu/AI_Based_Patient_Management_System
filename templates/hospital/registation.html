@@ -1,0 +1,143 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'custom/re_design.css' %}"/>
+<link rel="stylesheet" href="{% static 'custom/registation.css' %}"/>
+
+{% endblock style %}
+{% block maincontent %}
+<!--inner banner-->
+<div class="inner-banner">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7">
+                <h1>Registration</h1>
+            </div>
+            <div class="col-md-5">
+                <ol class="breadcrumb">
+                    <li><a href="{% url 'index' %}">Home</a></li>
+                    <li class="active">Registration</li>
+                    <li class="active">Type</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+<!--inner banner End-->
+
+<!--Main Content Start-->
+
+<div class="container make-box">
+    <div class="vertical-card">
+        <h2 class="text-center"> Please select account Type</h2> <br>
+        <di class="col-6 float-left">
+            <a href="#" class="btn" data-toggle="modal" data-target="#PatientModal">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Patient</h5> <br>
+                        <img class="image-class" src="{% static 'admin/img/gis/patient.gif' %}">
+
+                    </div>
+                </div>
+            </a>
+        </di>
+        <di class="col-6 float-right">
+            <a href="#" class="btn" data-toggle="modal" data-target="#DoctorModal">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Doctor</h5>
+                        <img class="image-class_doctor" src="{% static 'admin/img/gis/doctor.gif' %}">
+                    </div>
+                </div>
+            </a>
+        </di>
+    </div>
+</div>
+
+
+<form id="application_form" action="" enctype="multipart/form-data" class="form-register" method="POST"
+      accept-charset="UTF-8">
+    {% csrf_token %}
+    <!-- Modal -->
+    <div class="modal fade" id="DoctorModal" tabindex="-1" aria-labelledby="DoctorModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content secound_save">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="DoctorModalLabel">Doctor Registration Form</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                        <div class="form-group">
+                            {{ form.name|as_crispy_field }}
+                        </div>
+                       <div class="form-group">
+                            {{ form.picture|as_crispy_field }}
+                        </div>
+                       <div class="form-group">
+                            {{ form.speciality|as_crispy_field }}
+                        </div>
+
+                </div>
+
+                <div class="modal-body">
+                    {% crispy signup %}
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Submit Form</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+<form id="application_form_patient" action="" enctype="multipart/form-data" class="form-register" method="POST"
+      accept-charset="UTF-8">
+    {% csrf_token %}
+    <!-- Modal -->
+    <div class="modal fade" id="PatientModal" tabindex="-1" aria-labelledby="PatientModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content secound_save_again">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="PatientModallLabel">Patient Registration Form</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                        <div class="form-group">
+                            {{ form_patient.name|as_crispy_field }}
+                        </div>
+                       <div class="form-group">
+                            {{ form_patient.age|as_crispy_field }}
+                        </div>
+                       <div class="form-group">
+                            {{ form_patient.nid|as_crispy_field }}
+                        </div>
+
+                </div>
+
+                <div class="modal-body">
+                    {% crispy signup_patient %}
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Submit Form</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<!--Main Content End-->
+{% endblock maincontent %}

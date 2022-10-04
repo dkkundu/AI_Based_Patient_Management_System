@@ -1,0 +1,109 @@
+{% extends 'patient/profile.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block nev_block %}
+<li><a href="{% url 'index' %}">Home</a></li>
+<li class="active">Profile Update</li>
+{%  endblock %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'custom/re_design.css' %}"/>
+<link rel="stylesheet" href="{% static 'custom/profile.css' %}"/>
+<style>
+  .inner-banner {
+    padding: 30px 0 30px !important;
+}
+.card-body {
+    padding: 0px 65px;
+}
+.card {
+    width: 347px !important;
+}
+.container.make-box {
+    margin-top: 10%;
+}
+.image-class_search {
+    width: 78%;
+}
+.image-class {
+    width: 66%;
+}
+
+</style>
+{% endblock %}
+
+{% block profile_block %}
+
+<div class="container make-box">
+    <br>
+    <div class="">
+        <di class="col-3 float-left">
+            <a href="{% url 'patient_ms:appointment_confirmation' pk=last_appitment.pk %}" class="btn" target="_blank">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Last Appointment</h5> <br>
+                        <img class="image-class"
+                             src="{% static 'image/click.gif' %}">
+
+                    </div>
+                </div>
+            </a>
+        </di>
+        <di class="col-3 float-right">
+            <a href="#" class="btn" data-toggle="modal"
+               data-target="#exampleModalCenter">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Search by Filter</h5>
+                        <img class="image-class_search"
+                             src="{% static 'image/search.gif' %}">
+                    </div>
+                </div>
+            </a>
+        </di>
+    </div>
+</div>
+
+
+<form id="application_form" action="" enctype="multipart/form-data"
+      class="form-register" method="POST" accept-charset="UTF-8">
+    {% csrf_token %}
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Search by Date</h5>
+                    <button type="button" class="close" data-dismiss="modal"
+                            aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="col-6">
+
+
+                        <div id="div_id_appointment_day" class="form-group">
+                            <label for="id_appointment_day" class=" requiredField">Appointment Day<span class="asteriskField">*</span>
+                            </label>
+                            <div class="">
+                                <input type="date" name="appointment_day" class="dateinput form-control" required="" id="id_appointment_day">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+</form>
+
+
+{%  endblock %}
+
