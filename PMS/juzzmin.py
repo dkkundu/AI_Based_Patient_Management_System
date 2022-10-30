@@ -6,15 +6,15 @@ https://django-jazzmin.readthedocs.io/configuration/
 CONFIG = {  # -----------------------------------------------------------------
 
     # title of the window
-    "site_title": "TPL Django",
+    "site_title": "DK",
     # Title on the brand, and the login screen (19 chars max)
-    "site_header": "TPL Django",
+    "site_header": "DK Kundu",
     # square logo to use for your site
-    "site_logo": "tigerpark/logo.png",
+    "site_logo": "image/PM.png",
     # Welcome text on the login screen
-    "welcome_sign": "Welcome to TPL Django",
+    "welcome_sign": "Welcome to PMS",
     # Copyright on the footer
-    "copyright": "Tiger Park Limited",
+    "copyright": "PM-System",
     # The model admin to search from the search bar
     "search_model": "Core.user",
     # Field name on user model that contains avatar image
@@ -32,8 +32,8 @@ CONFIG = {  # -----------------------------------------------------------------
         },
         # external url that opens in a new window (Permissions can be added)
         {
-            "name": "Demo",
-            "url": "https://tpl-django.tiger-park.com/",
+            "name": "DK Kundu",
+            "url": "http://dkkundu.com/",
             "new_window": True
         },
         # model admin to link to (Permissions checked against model)

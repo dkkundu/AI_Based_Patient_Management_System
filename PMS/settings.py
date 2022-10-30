@@ -163,8 +163,8 @@ WSGI_APPLICATION = 'PMS.wsgi.application'
 
 AUTH_USER_MODEL = 'Core.User'
 
-LOGIN_URL = '/auth/login/'
-LOGIN_REDIRECT_URL = 'index'
+LOGIN_URL = '/login/'
+LOGIN_REDIRECT_URL = 'login'
 LOGOUT_REDIRECT_URL = 'index'
 
 

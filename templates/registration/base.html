@@ -1,23 +1,73 @@
 {% extends 'base/base.html' %}
 
 {% block title_text %}Registration Base{% endblock %}
+    {% block css_extra %}
+        <style>
+
+/*======================
+    404 page
+=======================*/
+
+
+
+.page_404 {
+    padding: 5% 0%;
+    background: #fff;
+    font-family: 'Arvo', serif;
+}
+.page_404  img{ width:100%;}
+
+.four_zero_four_bg{
+
+ background-image: url(https://cdn.dribbble.com/users/285475/screenshots/2083086/dribbble_1.gif);
+    height: 400px;
+    background-position: center;
+ }
+
+
+ .four_zero_four_bg h1{
+ font-size:80px;
+ }
+
+  .four_zero_four_bg h3{
+			 font-size:80px;
+			 }
+
+			 .link_404{
+	color: #fff!important;
+    padding: 10px 20px;
+    background: #39ac31;
+    margin: 20px 0;
+    display: inline-block;}
+	.contant_box_404{ margin-top:-50px;}
+        </style>
+    {% endblock css_extra %}
 
 {% block content_body %}
-    <div class="row justify-content-center mt-5">
-        {% block reg_body %}
-        <div class="col col-sm-9 col-md-6 col-lg-4 col-xl-3 content-border mt-5 m-0 p-0">
-            {% block reg_heading %}
-                <div class="row no-gutters bg-dark text-info justify-content-center px-3 py-2">
-                    <h4 class="col-auto font-weight-bold font-saira mb-0">{% block reg_heading_text %}TITLE{% endblock reg_heading_text %}</h4>
-                </div>
-            {% endblock reg_heading %}
+    <section class="page_404">
+	<div class="container">
+		<div class="row">
+		<div class="col-sm-12 ">
+		<div class="col-sm-10 col-sm-offset-1  text-center">
+		<div class="four_zero_four_bg">
+			<h1 class="text-center ">404</h1>
 
-            {% block reg_content %}
-                <div class="row no-gutters justify-content-center">
-                    If you're seeing this, then something went wrong. Oops!
-                </div>
-            {% endblock reg_content %}
-        </div>
-        {% endblock reg_body %}
-    </div>
+
+		</div>
+
+		<div class="contant_box_404">
+		<h3 class="h2">
+		Look like you're lost
+		</h3>
+
+		<p>the page you are looking for not avaible!</p>
+
+		<a href="/" class="link_404">Go to Home</a>
+	</div>
+		</div>
+		</div>
+		</div>
+	</div>
+</section>
+
 {% endblock %}

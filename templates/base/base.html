@@ -9,6 +9,7 @@
 
     <!-- META, FAVICON, CSS -->
     {% include 'snippets/base_head.html' %}
+{% block css_extra %} {% endblock %}
 </head>
 <body>
     {% block body %}
@@ -70,7 +71,7 @@
 
     <!-- FOOTER -->
     {% block footer %}
-        {% include 'snippets/attribution.html' %}
+{#        {% include 'snippets/attribution.html' %}#}
     {% endblock footer %}
 
     <!-- SCRIPTS -->

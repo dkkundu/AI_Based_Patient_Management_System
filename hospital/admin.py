@@ -14,3 +14,7 @@ admin.site.register(Faq)
 admin.site.register(Gallery)
 admin.site.register(Contact)
 admin.site.register(Speciality)
+
+admin.site.site_header = 'PMS Admin'
+admin.site.site_title = 'PM-System'
+admin.site.index_title = 'PM-System'
