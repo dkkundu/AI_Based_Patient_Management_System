@@ -1,0 +1,104 @@
+.card{
+  display: inline-block;
+  margin: 10px;
+  boder: 1px solid #eee;
+  box-shadow: 0 2px 2px #333;
+  width:400px;
+  padding:20px;
+  border-radius: 8px;
+}
+
+.card:hover{
+  display: inline-block;
+  margin: 10px;
+  boder: 1px solid #eee;
+  box-shadow: 2px 4px 6px #333;
+  width:393px
+  padding:20px;
+  border-radius: 8px;
+}
+
+.row.select-register {
+    display: grid;
+    grid-template-columns: 11% 42% 8%;
+}
+.image-class_doctor {
+    width: 38%
+}
+.image-class {
+    width: 100%;
+}
+.vertical-card{
+    width:80%;
+    margin:70px auto;
+    margin-top: 41%;
+}
+h2.text-center.message {
+    margin-bottom: 4%;
+}
+
+
+.item {
+    display: inline-block;
+    overflow: hidden;
+    padding: 1.2rem 3rem;
+    position: relative;
+    margin-bottom: 1rem;
+    min-width: 200px;
+    text-align: center;
+}
+
+/* rotate effect */
+.rotate {
+    border: 2px solid #d02537;
+    color: #d02537;
+    margin-left: 57px;
+    margin-bottom: 26px;
+    margin-top: -14px;
+}
+.rotate::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    transform-origin: bottom left;
+    transform: rotate(-90deg);
+    transition: transform 0.2s;
+    background: #0e356c;
+}
+.rotate:hover::before {
+    transform: rotate(0deg);
+}
+.rotate:hover {
+    color: #fff;
+    background: #bf0311;
+}
+.requiredField{
+    color: #d64555;
+}
+form#login {
+    border: 2px solid #d64555;
+}
+.modal-body {
+    position: relative;
+    padding: 55px;
+}
+
+
+.rotate-update-p {
+    border: 2px solid #d02537;
+    color: #d02537;
+    margin-bottom: 26px;
+    margin-top: 18px;
+}
+
+.rotate-update-p:hover::before {
+    transform: rotate(0deg);
+}
+.rotate-update-p:hover {
+    color: #fff;
+    background: #bf0311;
+}

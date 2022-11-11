@@ -1,0 +1,29 @@
+upstream PMS {
+        server unix:/opt/AI_Based_Patient_Management_System/uwsgi/uwsgi.sock;
+}
+
+server {
+        listen 80;
+        server_name 185.185.82.204;
+
+        access_log /opt/AI_Based_Patient_Management_System/logs/access.log;
+        error_log /opt/AI_Based_Patient_Management_System/logs/error.log;
+
+        charset utf-8;
+        client_max_body_size 16M;
+
+        location /static {
+                alias /opt/AI_Based_Patient_Management_System/static;
+        }
+
+        location /media {
+                alias /opt/AI_Based_Patient_Management_System/media;
+        }
+
+        location / {
+                uwsgi_pass PMS;
+                include uwsgi_params;
+                uwsgi_read_timeout 300s;
+                uwsgi_send_timeout 300s;
+        }
+}

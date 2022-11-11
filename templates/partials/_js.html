@@ -1,0 +1,85 @@
+</div>
+<!--Wrapper End-->
+{% load static %}
+{% load message_type_checker %}
+<script src="{% static 'heartcare/js/jquery.min.js' %}"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+<script src="{% static 'heartcare/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'heartcare/js/owl.carousel.min.js' %}"></script>
+<!--
+<script src="{% static 'heartcare/js/bootstrap-datetimepicker.min.js' %}"></script>
+-->
+<script src="{% static 'heartcare/js/custom.js' %}"></script>
+<script src="{% static 'custom/sweetalert2.all.min.js' %}"></script>
+
+
+
+<script>
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag('js', new Date());
+
+  gtag('config', 'UA-108110591-1');
+</script>
+
+{% if messages %}
+    {% for message in messages %}
+        {% if message|message_check %}
+        <script>
+            Swal.fire({
+              icon: 'error',
+              title: 'Error...',
+              text: '{{message}}',
+              footer: 'Please try again'
+            })
+
+        </script>
+        {% else %}
+        <script>
+           Swal.fire(
+              'Successfully Done!',
+              '{{message}}',
+              'success'
+            )
+
+        </script>
+        {% endif %}
+    {% endfor %}
+{% endif %}
+
+<script>
+    $("#division").change(function () {
+    var url = $("#application_form").attr("data-district-url");
+    var divisionId = $(this).val();
+    $.ajax({
+        url: url,
+        data: {
+        'division': divisionId
+        },
+        success: function (data) {
+        $("#district").html(data);
+        }
+    });
+
+});
+
+$("#district").change(function () {
+    var url = $("#application_form").attr("data-upazila-url");
+    var districtId = $(this).val();
+    $.ajax({
+        url: url,
+        data: {
+        'district': districtId
+        },
+        success: function (data) {
+        $("#upazila").html(data);
+        }
+    });
+
+});
+
+</script>

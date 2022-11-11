@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+{% load static %}
+{% load message_type_checker %}
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PM-System | Patient Management System</title>
+  {% block style %}
+  {% endblock style %}
+
+  {% include 'partials/_css.html' %}
+
+</head>
+
+
+<body>
+  <!--Wrapper Start-->
+  <div class="wrapper">
+    <!--Header Start-->
+    {% include 'partials/_header.html' %}
+
+    <!--Header End-->
+    {% include 'partials/_sidebar.html' %}
+
+    <!--Main Slider-->
+    {% include 'partials/_slider.html' with sliders=sliders %}
+    <!--Main Slider End-->
+
+    <!-- Main Content Start -->
+    {% block maincontent %}
+
+    {% endblock maincontent %}
+    <!-- Main content End -->
+
+    <!--Footer Start-->
+    {% include 'partials/_footer.html' %}
+    <!--Footer End-->
+    {% include 'partials/_js.html' %}
+  </div>
+{% block extra_js %}
+{% endblock extra_js %}
+</body>
+
+</html>

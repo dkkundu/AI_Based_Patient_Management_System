@@ -1,0 +1,17 @@
+[Unit]
+Description=PMS-uWSGI-instance
+After=network.target postgresql-11.service
+
+[Service]
+User=centos
+Group=nginx
+WorkingDirectory=/opt/PMS
+Environment="PATH=/opt/PMS/venv/bin"
+ExecStart=/opt/PMS/venv/bin/uwsgi --ini /opt/PMS/uwsgi/uwsgi.ini
+Restart=always
+KillSignal=SIGQUIT
+Type=notify
+NotifyAccess=all
+
+[Install]
+WantedBy=multi-user.target

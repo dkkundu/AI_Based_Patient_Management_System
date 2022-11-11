@@ -1,0 +1,42 @@
+{% extends "dashboard/dashboard.html" %}
+{% load static %}
+
+
+{% block body  %}
+<div class="col-md-12">
+    <div class="tile">
+        <h3 class="tile-title">Bordered Table</h3>
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Phone Number</th>
+                <th>Age</th>
+                <th class="col-md-3 col-xs-1">Address</th>
+                <th class="col-md-2 col-xs-1">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for object in object_list %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ object.name }}</td>
+                <td>{{ object.user }}</td>
+
+                <td>{{ object.age }}</td>
+                <td class="col-md-3 col-xs-1">{{ object.get_full__address }}</td>
+
+                <td class="col-md-2 col-xs-1">
+                    <a class="btn btn-outline-success" href="{% url 'patient_ms:view_record' pk=object.pk %}">
+                        <i class="fa fa-clipboard"> All Record </i>
+                    </a>
+                </td>
+            </tr>
+            {% endfor  %}
+
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

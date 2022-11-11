@@ -1,0 +1,215 @@
+{% extends "dashboard/dashboard.html" %}
+{% load static %}
+{% block extra_css  %}
+    <link rel="stylesheet" type="text/css" href="{% static 'doctor/css/profile.css' %}">
+    <style>
+  body{
+    margin-top:20px;
+    color: #1a202c;
+    text-align: left;
+    background-color: #e2e8f0;
+}
+.main-body {
+    padding: 15px;
+}
+.card {
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.06);
+}
+
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 0 solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+}
+
+.card-body {
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding: 1rem;
+}
+
+.gutters-sm {
+    margin-right: -8px;
+    margin-left: -8px;
+}
+
+.gutters-sm>.col, .gutters-sm>[class*=col-] {
+    padding-right: 8px;
+    padding-left: 8px;
+}
+.mb-3, .my-3 {
+    margin-bottom: 1rem!important;
+}
+
+.bg-gray-300 {
+    background-color: #e2e8f0;
+}
+.h-100 {
+    height: 100%!important;
+}
+.shadow-none {
+    box-shadow: none!important;
+}
+.card-body.details {
+    height: 163px;
+}
+.counter {
+    background: #1b8c58;
+    font-size: 20px;
+    margin-left: -8px;
+    color: #fff;
+}
+</style>
+{% endblock extra_css %}
+
+{% block body  %}
+<div class="col-md-12">
+    <div class="container">
+    <div class="main-body">
+
+
+          <div class="row gutters-sm">
+            <div class="col-md-3 mb-3">
+              <div class="card">
+                <div class="card-body">
+                  <div class="d-flex flex-column align-items-center text-center">
+                      {% if patient.picture %}
+                    <img src="{{ object.picture.url }}" alt="Admin" class="rounded-circle" width="130">
+                      {% else %}
+                    <img src="{% static 'image/p.jpg' %}" alt="Admin" class="rounded-circle" width="150">
+                      {% endif %}
+                    <div class="mt-3">
+                      <h4>{{ patient.name }}</h4>
+                      <p class="text-muted font-size-sm">{{ patient.get_full__address }}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <div class="col-md-7">
+              <div class="card mb-3">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Patient Name</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      {{ patient.name }}
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Phone</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      {{ patient.user }}
+                    </div>
+                  </div>
+
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Age</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      {{ patient.age }}
+                    </div>
+                  </div>
+
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Patient Division</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      {{ patient.division }}
+                    </div>
+                  </div>
+
+                    <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Patient District</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      {{ patient.district }}
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+            <div class="col-md-2 mb-3">
+            </div>
+          </div>
+
+
+
+          <div class="row gutters-sm">
+             {% for object in objects_list %}
+            <div class="col-md-3 mb-3"></div>
+            <div class="col-md-7">
+              <div class="card mb-3">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Prescription By</h6>
+                    </div>
+                    <div class="col-sm-5 text-secondary">
+                      {{ object.doctor.doctor.name }} ( Doctor)
+                    </div>
+                    <div class="col-sm-3 text-secondary">
+                       ({{ object.created_at| date:'d-M-Y' }})
+                    </div>
+                    <div class="col-sm-1 counter">
+                      {{ forloop.counter }}
+                    </div>
+                  </div>
+
+
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-12 text-secondary">
+                      {{ object.record| safe }}
+                    </div>
+                  </div>
+                  <hr>
+                </div>
+              </div>
+
+            </div>
+            <div class="col-md-2 mb-3">
+              {% if object.file %}
+              {% for f in object.file.all %}
+              <div class="card">
+                <div class="card-body">
+                  <div class="d-flex flex-column align-items-center text-center">
+
+                    <div class="text-secondary">
+                      <strong>Files {{ forloop.counter }}: </strong> <a href="{{ f.document.url }}">{{ f.file_name }}</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {% endfor %}
+              {% endif %}
+
+            </div>
+
+            {% endfor %}
+
+          </div>
+
+        </div>
+    </div>
+
+</div>
+{% endblock %}

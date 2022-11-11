@@ -1,0 +1,92 @@
+{% extends 'patient/profile.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block nev_block %}
+<li><a href="{% url 'index' %}">Home</a></li>
+<li class="active">Profile Update</li>
+{%  endblock %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'custom/re_design.css' %}"/>
+<link rel="stylesheet" href="{% static 'custom/profile.css' %}"/>
+<style>
+  .inner-banner {
+    padding: 30px 0 30px !important;
+}
+.card-body {
+    padding: 0px 65px;
+}
+.card {
+    width: 347px !important;
+}
+.container.make-box {
+    margin-top: 10%;
+}
+.image-class_search {
+    width: 78%;
+}
+.image-class {
+    width: 66%;
+}
+h3.center-text {
+    margin: 4px 20%;
+    margin-bottom: 6%;
+}
+
+
+</style>
+{% endblock %}
+
+{% block profile_block %}
+
+<div class="container make-box">
+    <a class="btn btn-outline-primary" href="{% url 'patient_ms:appointment_download' pk=object.pk %}">
+       <i class="fa fa-plus-square-o" aria-hidden="true"> Download</i>
+    </a>
+    <h3 class="center-text">Appointment Letter</h3>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-sm-3">
+                <h6 class="mb-0">Doctor Name</h6>
+            </div>
+            <div class="col-sm-9 text-secondary">
+                {{ object.doctor.name }}  ({{ object.doctor.speciality }})
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-sm-3">
+                <h6 class="mb-0">Hospital</h6>
+            </div>
+            <div class="col-sm-9 text-secondary">
+                {{ object.doctor.present_hospital }}
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-sm-3">
+                <h6 class="mb-0">Appointment </h6>
+            </div>
+            <div class="col-sm-9 text-secondary">
+                {{ object.appointment_day }} ( <strong> Time:</strong> {{ object.appointment_time }})
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-sm-3">
+                <h6 class="mb-0">Serial Number</h6>
+            </div>
+            <div class="col-sm-9 text-secondary">
+                {{ object.serial_number }}
+            </div>
+        </div>
+        <hr>
+
+    </div>
+
+</div>
+
+
+{%  endblock %}
+

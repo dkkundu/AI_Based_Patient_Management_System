@@ -1,0 +1,99 @@
+{% extends "dashboard/dashboard.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block extra_css  %}
+<link rel="stylesheet" type="text/css" href="{% static 'doctor/css/profile.css' %}" xmlns="http://www.w3.org/1999/html">
+{% endblock extra_css %}
+
+{% block body  %}
+<form id="application_form" action="" enctype="multipart/form-data" class="form-register" method="POST"
+      accept-charset="UTF-8"
+      data-upazila-url={% url 'load_upazila' %} data-district-url={% url 'load_district' %}>
+{% csrf_token %}
+<div class="col-md-12">
+    <div class="container rounded bg-white mt-5 mb-5">
+        <div class="row">
+
+            <div class="col-md-3 border-right">
+                <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+                    <img id="imagePreview" class="rounded-circle mt-5 col-12" src="{{ object.picture.url }}">
+                    <span class="font-weight-bold">{{ object.name }}</span>
+                    <span class="text-black-50">{{ object.user }}</span>
+                </div>
+            </div>
+            <div class="col-md-5 border-right">
+                <div class="p-3 py-5">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h4 class="text-right">Profile Settings</h4>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-md-12"> {{ form.name | as_crispy_field }}</div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-12">{{ form.speciality | as_crispy_field }}</div>
+                        <div class="col-md-12">{{ form.present_hospital | as_crispy_field }}</div>
+                        <div class="col-md-12">{{ form.picture | as_crispy_field }}</div>
+
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-12">{{ form.facebook | as_crispy_field }}</div>
+                        <div class="col-md-6">{{ form.twitter | as_crispy_field }}</div>
+                        <div class="col-md-6">{{ form.instagram | as_crispy_field }}</div>
+                    </div>
+                    <div class="mt-5 text-center">
+                        <button class="btn btn-primary profile-button" type="submit">Update Profile</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="p-3 py-5">
+                    <div class="d-flex justify-content-between align-items-center experience">
+                        <span>Present Address</span></div>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-6">{{ form.division | as_crispy_field }}</div>
+                        <div class="col-md-6">{{ form.district | as_crispy_field }}</div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-6">{{ form.upazila | as_crispy_field }}</div>
+                        <div class="col-md-6">{{ form.post_code | as_crispy_field }}</div>
+                    </div>
+                    <br>
+                    <div class="col-md-12">{{ form.address | as_crispy_field }}</div>
+                    <br>
+                    <div class="col-md-12">{{ form.details | as_crispy_field }}</div>
+                </div>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+
+
+</div>
+</form>
+{% endblock %}
+
+{% block extra_ja %}
+<script>
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            $('#imagePreview').attr('src', e.target.result);
+        }
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+$("#id_picture").change(function(){
+    readURL(this);
+});
+
+</script>
+<script src="{% static 'custom/load_data.js' %}"></script>
+{% endblock %}

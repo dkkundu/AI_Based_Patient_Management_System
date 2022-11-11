@@ -1,0 +1,36 @@
+{% extends 'patient/profile.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block nev_block %}
+<li><a href="{% url 'index' %}">Home</a></li>
+<li class="active">Profile Update</li>
+{%  endblock %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'custom/re_design.css' %}"/>
+<link rel="stylesheet" href="{% static 'custom/profile.css' %}"/>
+<style>
+  .inner-banner {
+    padding: 30px 0 30px !important;
+}
+.card-body {
+    padding: 0px 65px;
+}
+</style>
+{% endblock %}
+
+{% block profile_block %}
+        <form id="application_form" action="" enctype="multipart/form-data" class="form-register" method="POST" accept-charset="UTF-8"
+          data-upazila-url={% url 'load_upazila' %} data-district-url={% url 'load_district' %}>
+          {% csrf_token %}
+          <div class="card-body">
+              {{ form | crispy }}
+              <button type="submit" class="item rotate-update-p">Update</button>
+          </div>
+
+        </form>
+
+
+{%  endblock %}
+

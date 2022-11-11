@@ -1,0 +1,116 @@
+{% load static %}
+{% load group_checker_tag %}
+{% block style %}
+
+{% endblock style %}
+<header class="site-header">
+    <div class="top-bar">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-sm-8">
+                    <ul>
+                        <li><i class="fa fa-phone" aria-hidden="true"></i> Call at: <strong>+8801843070993</strong></li>
+                        <li><i class="fa fa-envelope-o" aria-hidden="true"></i> Email us:
+                            <strong>info@pm-system.com</strong>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-6 col-sm-4 top-social"><a href="#"><i class="fa fa-twitter"
+                                                                         aria-hidden="true"></i></a>
+                    <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a> <a href="#"><i
+                            class="fa fa-google-plus"
+                            aria-hidden="true"></i></a> <a href="#"><i class="fa fa-instagram"
+                                                                       aria-hidden="true"></i></a> <a
+                            href="#"><i class="fa fa-youtube-play" aria-hidden="true"></i></a></div>
+            </div>
+        </div>
+    </div>
+    <div class="nav-logo-area">
+        <div class="container ">
+            <div class="row">
+                <div class="col-md-12">
+                    <nav class="navbar navbar-default navbar-static-top">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false"> <span
+                                    class="sr-only">Toggle
+                  navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span
+                                    class="icon-bar"></span></button>
+                            <a class="navbar-brand logo-image" href="{% url 'index' %}"><img
+                                    src="{% static 'heartcare/images/logo.png' %}"
+                                    alt=""></a>
+                                
+                                </div>
+
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav">
+                                <li><a href="{% url 'index' %}">Home</a></li>
+                                </li>
+                                <li><a href="{% url 'services' %}">Services</a></li>
+                                <li><a href="{% url 'doctors' %}">Doctors</a></li>
+
+                                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                                                        role="button"
+                                                        aria-haspopup="true" aria-expanded="false">Features <span
+                                        class="fa fa-angle-down"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="{% url 'gallery' %}">Gallery</a></li>
+                                        <li><a href="{% url 'faqs' %}">Faqs</a></li>
+                                    </ul>
+                                </li>
+
+                                <li><a href="{% url 'contact' %}">Contact</a></li>
+                            </ul>
+
+                            <ul class="nav navbar-nav navbar-right">
+
+                                {% if user.is_authenticated %}
+                                <li><a class="appoint" href="{% url 'patient_ms:appointment' %}">Appointment</a></li>
+
+                                <li class="dropdown">
+                                    <li href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                       aria-haspopup="true" aria-expanded="false">
+                                        {% if login_user.picture %}
+                                        <img src="{{ login_user.picture.url }}"
+                                             width="40" height="40" class="rounded-circle">
+                                        {% else %}
+                                        <img src="{% static 'image/doctor.jpg' %}"
+                                             width="40" height="40" class="rounded-circle">
+                                        {% endif %}
+
+                                    </li>
+                                    <ul class="dropdown-menu">
+                                        {% if user|is_doctor %}
+                                            <li><a href="{% url 'doctor_dashboard' %}"> Dashboard </a></li>
+                                        {% endif %}
+
+                                        {% if user|is_patient %}
+                                          <li><a href="{% url 'patient_ms:patient_profile' %}"> Profile </a></li>
+                                        {% endif %}
+                                        <li><a href="{% url 'logout' %}">Logout</a></li>
+
+                                    </ul>
+                                </li>
+                                {% else %}
+                                <li><a class="appoint" href="{% url 'login' %}">Sign In</a></li>
+                                <li><a class="appoint" href="{% url 'registration_type' %}">Registration</a></li>
+                                {% endif %}
+
+                                <li><a id="menu-toggle" href="#" class="toggle"><img
+                                        src="{% static 'heartcare/images/bars.png' %}"
+                                        alt=""></a></li>
+                            </ul>
+                        </div>
+                        <!-- /.navbar-collapse -->
+
+
+<!--                        LOG IN FORM-->
+
+
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
