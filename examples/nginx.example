@@ -1,4 +1,4 @@
-upstream PMS {
+upstream PMSS {
         server unix:/opt/AI_Based_Patient_Management_System/uwsgi/uwsgi.sock;
 }
 
