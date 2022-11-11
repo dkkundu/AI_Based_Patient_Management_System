@@ -15,6 +15,7 @@ from .dashboard import (
 from Core.views import (
     dr_change_password
 )
+from hospital import prediction_views
 urlpatterns = [
     path('', views.HomeView.as_view(), name='index'),
     path(
@@ -62,5 +63,11 @@ urlpatterns = [
         dr_change_password, name='dr_change_password'
     ),
 
+
+    # Prediction url
+    path(
+        'prediction/type/', prediction_views.PredictionType.as_view(),
+        name='prediction_type'
+    ),
 
 ]

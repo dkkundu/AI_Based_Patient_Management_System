@@ -117,6 +117,7 @@ PROJECT_APPS = [
     'appointment.apps.AppointmentConfig',
     'address.apps.AddressConfig',
     'patient_ms.apps.PatientMsConfig',
+    'ai_ml_system.apps.AiMlSystemConfig'
 ]
 
 # consolidate all installed applications here

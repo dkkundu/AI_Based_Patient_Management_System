@@ -2,13 +2,13 @@
 # https://docs.djangoproject.com/en/3.1/howto/deployment/wsgi/uwsgi/
 
 # the base directory (full path)
-chdir           = /opt/PMS
+chdir           = /opt/AI_Based_Patient_Management_System
 
 # Django's wsgi file (this will be the folder name where wsgi.py and settings.py is)
 module          = PMS.wsgi
 
 # the virtualenv (full path)
-home            = /opt/PMS/venv
+home            = /opt/AI_Based_Patient_Management_System/venv
 
 # process-related settings
 master          = true
@@ -19,7 +19,7 @@ threads         = 2
 enable-threads  = True
 
 # the socket (use the full path to be safe
-socket          = /opt/PMS/uwsgi/uwsgi.sock
+socket          = /opt/AI_Based_Patient_Management_System/uwsgi/uwsgi.sock
 
 # ... with appropriate permissions - may be needed
 chmod-socket    = 666

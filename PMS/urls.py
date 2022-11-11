@@ -7,6 +7,7 @@ import debug_toolbar
 urlpatterns = [
     path('manage/', admin.site.urls),
     path('', include('hospital.urls')),
+    path('ai/', include('ai_ml_system.urls')),
     path('patient/', include('patient_ms.urls')),
     path('appointment/', include('appointment.urls')),
 
