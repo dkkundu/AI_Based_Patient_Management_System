@@ -7,6 +7,13 @@
 <link rel="stylesheet" href="{% static 'custom/re_design.css' %}"/>
 <link rel="stylesheet" href="{% static 'custom/registation.css' %}"/>
 
+    <style>
+    .modal-dialog {
+        width: 65% !important;
+        margin: 30px auto !important;
+    }
+    </style>
+
 {% endblock style %}
 {% block maincontent %}
 <!--inner banner-->
@@ -76,10 +83,14 @@
                         <div class="form-group">
                             {{ form.name|as_crispy_field }}
                         </div>
+                     <div class="form-group">
+                            {{ form.doctor_id|as_crispy_field }}
+                        </div>
                        <div class="form-group">
                             {{ form.picture|as_crispy_field }}
                         </div>
-                       <div class="form-group">
+
+                    <div class="form-group">
                             {{ form.speciality|as_crispy_field }}
                         </div>
 

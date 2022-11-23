@@ -53,6 +53,9 @@ class Doctor(models.Model):
         blank=True, null=True, related_name="doctor"
     )
     name = models.CharField(max_length=120, null=True, blank=True)
+    doctor_id = models.CharField(
+        max_length=255, null=True, unique=True
+    )
 
     speciality = models.ForeignKey(
         Speciality, on_delete=models.PROTECT,

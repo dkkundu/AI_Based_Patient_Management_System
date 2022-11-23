@@ -11,7 +11,6 @@ register = template.Library()
 
 @register.filter
 def is_doctor(user):
-    print(user)
     return user_has_group(user, doctor_group)
 
 

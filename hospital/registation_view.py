@@ -70,7 +70,11 @@ class RegistrationPages(View):
             print("form----- Doctor", form.errors)
             print("form_patient-----", form_patient.errors)
             print("CommonSignupForm-----", CommonSignupForm.errors)
-            messages.warning(self.request, "Invalid data")
+            messages.warning(
+                self.request, f"Invalid data for NID and Password"
+
+
+            )
             logger.debug(self.request, "Unable to create account")
 
         context = {

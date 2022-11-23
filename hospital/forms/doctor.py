@@ -9,7 +9,8 @@ class DoctorForm(forms.ModelForm):
         fields = [
             "name",
             "picture",
-            'speciality'
+            'speciality',
+            'doctor_id'
 
         ]
 

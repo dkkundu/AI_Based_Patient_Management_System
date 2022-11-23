@@ -10,6 +10,11 @@ class PatientForm(forms.ModelForm):
             "age",
             "nid",
         ]
+        widgets = {
+            'nid': forms.TextInput(
+                attrs={'placeholder': 'Numeric 10/13/17 digits (ex: 1234567890)'}
+            ),
+        }
 
     def __init__(self, *args, **kwargs):
         super(PatientForm, self).__init__(*args, **kwargs)

@@ -10,6 +10,11 @@ import logging
 from django.contrib.auth import authenticate, login, logout
 from django.urls import reverse_lazy
 from hospital.forms import CustomLoginForm
+from hospital.uility import user_has_group
+from patient_ms.variable import (
+    doctor_group,
+    patient_group
+)
 logger = logging.getLogger(__name__)
 
 
@@ -87,6 +92,10 @@ class LoginView(View):
 
             if user is not None and user.is_active:
                 login(request, user)
+                if user_has_group(user, doctor_group):
+                    return redirect(self.get_doctor_url())
+                if user_has_group(user, patient_group):
+                    return redirect(self.get_patient_url())
                 return redirect(self.get_success_url())
             else:
                 messages.warning(
@@ -101,10 +110,25 @@ class LoginView(View):
             return render(request, self.template_name, context)
 
     def get_success_url(self):
-        messages.success(self.request,
-                         "Login successfully!")
+        messages.success(self.request, "Login successfully!")
         logger.debug("Login successfully")
         return reverse_lazy("index")
+
+    def get_doctor_url(self):
+        messages.success(
+            self.request, "Congratulations Doctor! You are Successfully Login"
+        )
+        logger.debug("Login successfully")
+        return reverse_lazy("doctor_dashboard")
+
+    def get_patient_url(self):
+        messages.success(
+            self.request, "Congratulations ! You are Successfully Login"
+        )
+        logger.debug("Login successfully")
+        return reverse_lazy("patient_ms:patient_profile")
+
+
 
 
 def logout_request(request):
